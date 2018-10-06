@@ -1,6 +1,8 @@
 # OCCAM-data-R
 R tools to generate data for use in Portland State University's Discrete Multivariate Modeling (DMM) tool, OCCAM.
 
+This code/project is released as Open Source Software under the MIT License (see LICENSE.txt).
+
 ## About OCCAM
 
 OCCAM is a tool built and provisioned by the Systems Science Department at Portland State University.  It's a tool that can perform various kinds of Discrete Multivariate Modeling (DMM).
