@@ -7,6 +7,7 @@
 #  Author:  Dale Frakes
 #  Date:    Mar 20, 2018
 #  Version: 0.1
+#  License:  MIT License (see LICENSE.txt)
 
 make_OCCAM_data <- function(df, DV=NULL, ignore_cols=c(), test_rows=c()) {
   # takes a dataframe of factors and returns a vector of strings that can be
