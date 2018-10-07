@@ -3,8 +3,8 @@ title: "DMIT Vignette:  OCCAM Data-Prep with R/Looking at Census-Income Data"
 author: "Dale Frakes"
 date: "March 20, 2018"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -19,7 +19,7 @@ The goal of this vignette is to demonstrate taking a data set and preparing it f
 
 ### Datasets
 
-We'll be selecting a data set from the [UCIML Repository](https://archive.ics.uci.edu/ml/datasets.html).  Specifically we'll be using the [Adult](http://archive.ics.uci.edu/ml/datasets/Adult).  It's a collection of some census data that's been used in many publications to show the capability of various algorithms to be able to predict if the income of a case will be above $50,000.  It's appealing for this project because it has several categorical variables and a few continuous ones.
+We'll be selecting a data set from the [UCIML Repository](https://archive.ics.uci.edu/ml/datasets.html).  Specifically we'll be using the [Adult](http://archive.ics.uci.edu/ml/datasets/Adult) dataset (http://archive.ics.uci.edu/ml/datasets/Adult).  It's a collection of some census data that's been used in many publications to show the capability of various algorithms to be able to predict if the income of a case will be above $50,000.  It's appealing for this project because it has several categorical variables and a few continuous ones.
 
 ![](./img/adultdata.png)  
 
