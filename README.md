@@ -5,7 +5,7 @@ This code/project is released as Open Source Software under the MIT License (see
 
 ## About OCCAM
 
-OCCAM is a tool built and provisioned by the Systems Science Department at Portland State University.  It's a tool that can perform various kinds of Discrete Multivariate Modeling (DMM).
+OCCAM is a tool built and provisioned by the Systems Science Department at Portland State University (https://www.pdx.edu/sysc/home).  It's a tool that can perform various kinds of Discrete Multivariate Modeling (DMM).
 
 * Link to PSU's DMM Page: https://www.pdx.edu/sysc/research-discrete-multivariate-modeling
 * Lik to OCCAM: http://dmm.sysc.pdx.edu/
