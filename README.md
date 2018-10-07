@@ -14,6 +14,8 @@ OCCAM is a tool built and provisioned by the Systems Science Department at Portl
 
 This is a basic R function that will take a dataframe made of categorical variables (e.g. factors) and generate a file appropriate for input into OCCAM.  The code contains the function and a short piece of code that will build dataframe of categorical data and demonstrate how to generate the OCCAM data file from that dataframe.
 
+There is also a vignette demonstrating the loading of a dataset and preparing it for use in OCCAM.  Some rudimentary results from running that data through OCCAM are shown and discussed.
+
 ### Example File:
 
 OCCAM expects data in format like the following example.  See OCCAM's manual for more details.
