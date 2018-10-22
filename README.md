@@ -61,3 +61,6 @@ The following is a list of limitations and potential improvements.
 * use existing R tools to bin continuous data or re-bin factors to lower cardinality
 * could be nicer if it aligned the header section on commas for readability
 
+Additional Related Projects:
+* creating binning code with analysis that can analyze a varaible and propose different options for binning/re-binning
+* create tool for "time series masking"

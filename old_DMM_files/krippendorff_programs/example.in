@@ -1,0 +1,38 @@
+* 6W 322EXAMPLE WITHOUT FREQUENCIES ASSIGNED
+ (7A1)
+ 000000
+ 000011
+ 100101
+ 100110
+ 010101
+ 010110
+ 001100
+ 001111
+ 110000
+ 110011
+ 101001
+ 101010
+ 011001
+ 011010
+ 111100
+ 111111
+ 011101
+ 100010
+*
+    ABCDEF                                          Figure 27
+    ABCD:CDEF                                       Figure 27
+    AC:BC:CD:DE:DF                                  Figure 27
+    A:B:C:D:E:F                                     Figure 27
+@   ABCEF                                           Example for [14.1]
+    ABCE:ABCF:ABEF:ACEF:BCEF                        fourth-order interactions
+    ABC:ABE:ABF:ACE:ACF:AEF:BCE:BCF:BEF:CEF         third-order interactions
+    AB:AC:AE:AF:BC:BE:BF:CE:CF:EF                   second-order interactions
+    A:B:C:E:F                                       first-order interactions
+    A:B:C:D:E:F                                     example: variable dropping
+    A:B:C:D:E
+    A:B:C:D
+    A:B:C
+    A:B
+    A
+Q
+

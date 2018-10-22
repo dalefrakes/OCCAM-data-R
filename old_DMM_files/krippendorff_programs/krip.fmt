@@ -1,0 +1,26 @@
+Structural analysis program requires specific format.
+---------------------------
+The first line of the input file:
+	column
+	   1:  *
+	  2-3: number of variables
+	   4:  letter A, if tuples are after frequencies
+	       letter B, if tuples are before frequencies
+	       letter W, if there are no frequencies
+	  5-8: sample size, used to override the frequency when so 
+		desired (optional)
+	 9-80: comments
+Second line:
+	Format for reading the data (for FORTRAN read statement). In the
+	format, the first element has to be A1.  The frequency numbers are
+	in real form (F4.0, for example).  The tuples should be read in as
+	characters (4A2, for example).  The order of frequency and tuples
+	should be consistent with the letter used on the first line.
+Data lines:
+	Follow the format stated on the second line.
+End of data:
+	* in the first column.
+Structure lines:
+	All the structures should start in column 5.
+End of strucutre (this is also the end of the input file ):
+	Q in the first column.

@@ -1,0 +1,188 @@
+
+
+
+
+********************************************************************************
+********************************************************************************
+
+                 CONFIRMATORY STUCTURAL MODELLING PROGRAM 3.0
+
+             BY  KLAUS KRIPPENDORFF  (UNIVERSITY OF PENNSYLVANIA)
+
+********************************************************************************
+
+
+
+
+********************************************************************************
+
+ EXAMPLE WITHOUT FREQUENCIES ASSIGNED                                    
+
+ FILENAMES: INPUT= example.in           MODEL-GENERATED= example.CST         
+
+  6 VARIABLES, USING      64CELLS AS    2 X 2 X 2 X 2 X 2 X 2 X
+
+********************************************************************************
+
+ Figure 27                   
+
+ MODEL:       ABCDEF                                               1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           0.0000         0.00       0.0000       0
+              IN MODEL:        1.8301       100.00     816.9224      63
+
+********************************************************************************
+
+ Figure 27                   
+
+ MODEL:       ABCD:CDEF                                            1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           0.4011        21.92     179.0331      36
+              IN MODEL:        1.4290        78.08     637.8893      27
+
+********************************************************************************
+
+ Figure 27                   
+
+ MODEL:       AC:BC:CD:DE:DF                                       1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.7854        97.56     797.0045      52
+              IN MODEL:        0.0446         2.44      19.9179      11
+
+********************************************************************************
+
+ Figure 27                   
+
+ MODEL:       A:B:C:D:E:F                                          1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.8301       100.00     816.9224      57
+              IN MODEL:        0.0000         0.00       0.0000       6
+
+********************************************************************************
+
+ Example for [14.1]          
+
+ MODEL:       ABCEF                                                1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           0.7778        42.50     347.1877      32
+              IN MODEL:        1.0523        57.50     469.7302      31
+
+********************************************************************************
+
+ fourth-order interactions   
+
+ MODEL:       ABCE:ABCF:ABEF:ACEF:BCEF                            16 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           0.7778        42.50     347.1877      33
+              IN MODEL:        1.0523        57.50     469.7302      30
+
+********************************************************************************
+
+ third-order interactions    
+
+ MODEL:       ABC:ABE:ABF:ACE:ACF:AEF:BCE:BCF:BEF:CEF             16 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.7558        95.94     783.7825      38
+              IN MODEL:        0.0742         4.06      33.1354      25
+
+********************************************************************************
+
+ second-order interactions   
+
+ MODEL:       AB:AC:AE:AF:BC:BE:BF:CE:CF:EF                       16 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.7558        95.94     783.7825      48
+              IN MODEL:        0.0742         4.06      33.1399      15
+
+********************************************************************************
+
+ first-order interactions    
+
+ MODEL:       A:B:C:E:F                                            1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.8301       100.00     816.9224      58
+              IN MODEL:        0.0000         0.00       0.0000       5
+
+********************************************************************************
+
+ example: variable dropping  
+
+ MODEL:       A:B:C:D:E:F                                          1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.8301       100.00     816.9224      57
+              IN MODEL:        0.0000         0.00       0.0000       6
+
+********************************************************************************
+
+                             
+
+ MODEL:       A:B:C:D:E                                            1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.8301       100.00     816.9224      58
+              IN MODEL:        0.0000         0.00       0.0000       5
+
+********************************************************************************
+
+                             
+
+ MODEL:       A:B:C:D                                              1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.8301       100.00     816.9224      59
+              IN MODEL:        0.0000         0.00       0.0000       4
+
+********************************************************************************
+
+                             
+
+ MODEL:       A:B:C                                                1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.8301       100.00     816.9224      60
+              IN MODEL:        0.0000         0.00       0.0000       3
+
+********************************************************************************
+
+                             
+
+ MODEL:       A:B                                                  1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.8301       100.00     816.9224      61
+              IN MODEL:        0.0000         0.00       0.0000       2
+
+********************************************************************************
+
+                             
+
+ MODEL:       A                                                    1 ITERATIONS
+              SAMPLE SIZE=        322
+
+ ACCOUNTS:                  INFORMATION       o/o         L**2       DF
+              ERROR:           1.8301       100.00     816.9224      62
+              IN MODEL:        0.0000         0.00       0.0000       1

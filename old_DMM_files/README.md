@@ -1,0 +1,1 @@
+These files, used in teaching DMM and using OCCAM, are originally available here: https://www.pdx.edu/sysc/research-discrete-multivariate-modeling.  They were developed by various students in those courses.
