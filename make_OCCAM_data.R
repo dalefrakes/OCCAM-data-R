@@ -6,45 +6,106 @@
 # 
 #  Author:  Dale Frakes
 #  Date:    Oct 24, 2018
-#  Version: 0.2
+#  Version: 0.21
 #  License:  MIT License (see LICENSE.txt)
 
-make_OCCAM_data <- function(df, DV=NULL, ignore_cols=c(), test_rows=c()) {
+make_OCCAM_data <- function(df, DV=NULL, ignore_cols=c(), test_rows=c(), treat_DV_special=TRUE) {
   # takes a dataframe of factors and returns a vector of strings that can be
   # written to a text file
-  # DV represents a column number to be set as a Dependent Variable
+  # DV represents a column number(s) to be set as a Dependent Variable(s)
   # ignore_cols is a vector of column numbers to be listed to be "ignored"
   # by OCCAM
+  # treat_DV_special determins if conventions like using "Z" for DVs should be used in variable labels
 
-  if (length(df) > 26^2){
+  num_variables <- length(df)  
+  
+  if (num_variables > 26^2){
     message <- "make_OCCAM_data can only handle data-frames with 676 (26^2) or fewer columns. "
     message <- paste0(message, length(df), " were provided in the dataframe.")
     stop(message)
   }  
   
-  if (length(df) <= 26){
-    # stop("make_OCCAM_data can only handle data-frames with 26 or fewer columns")
-    var_labels <- LETTERS
+  # process label variables
+  if (treat_DV_special == TRUE && length(DV) > 0  ) {
+    # this block will treat DVs special, by labeling them as Z*
+    if (num_variables <= 26){
+      # in the single-letter label case, DVs are labeled Z, Y, X, ...
+      # and IVs are labeled A, B, C, ...
+      var_label_list <- LETTERS
+      IV_ptr <- 1
+      DV_ptr <- length(var_label_list) - length(DV) + 1
+      
+      var_labels <- c()  # start with empty vector
+      for (i in 1:num_variables) {
+        if (is.element(i, DV)) {
+          var_labels <- c(var_labels, var_label_list[DV_ptr])
+          DV_ptr <- DV_ptr + 1
+        } else {
+          var_labels <- c(var_labels, var_label_list[IV_ptr])
+          IV_ptr <- IV_ptr + 1
+        }
+      }
+    } else {
+      # get a dataframe with combination of A-Y x A-Y (IVs without Z's if possible)
+      IV_base <- LETTERS[1:25]
+      AB <- expand.grid(IV_base, IV_base)
+      
+      #change it into a vector (gives us AA, BA, CA...  BB, CB, DB, ...)
+      AB <- paste0(AB$Var1, AB$Var2)
+      
+      # now get AA, BB, CC, DD (we want these first in the list of names)
+      AA <- paste0(IV_base,IV_base)
+      
+      var_label_list <- c(AA, setdiff(AB, AA))
+      
+      # get list of letter pairs for DVs 
+      AB <- rbind(expand.grid(IV_base, "Z"), expand.grid("Z", LETTERS))
+      AB <- paste0(AB$Var1, AB$Var2) # make into simple vector
+      
+      var_label_list <- c(var_label_list, AB)
+      IV_ptr <- 1
+      DV_ptr <- length(var_label_list) - length(DV) + 1
+      
+      var_labels <- c()  # start with empty vector
+      for (i in 1:num_variables) {
+        if (is.element(i, DV)) {
+          var_labels <- c(var_labels, var_label_list[DV_ptr])
+          DV_ptr <- DV_ptr + 1
+        } else {
+          var_labels <- c(var_labels, var_label_list[IV_ptr])
+          IV_ptr <- IV_ptr + 1
+        }
+      }
+      
+    }
   } else {
-    # get a dataframe with combination of A-Z x A-Z
-    AB <- expand.grid(LETTERS, LETTERS)
+    # in this block, there's no distinction in names for DVs, which sometimes are labeled "Z"
+    if (num_variables <= 26){
+      var_labels <- LETTERS[1:num_variables]
+    } else {
+      # get a dataframe with combination of A-Z x A-Z
+      AB <- expand.grid(LETTERS, LETTERS)
+      
+      #change it into a vector (gives us AA, BA, CA...  BB, CB, DB, ...)
+      AB <- paste0(AB$Var1, AB$Var2)
+      
+      # now get AA, BB, CC, DD (we want these first in the list of names)
+      AA <- paste0(LETTERS,LETTERS)
+      
+      var_labels <- c(AA, setdiff(AB, AA))[1:num_variables]
+    }
     
-    #change it into a vector (gives us AA, BA, CA...  BB, CB, DB, ...)
-    AB <- paste0(AB$Var1, AB$Var2)
-    
-    # now get AA, BB, CC, DD (we want these first in the list of names)
-    AA <- paste0(LETTERS,LETTERS)
-    
-    var_labels <- c(AA, setdiff(AB, AA))
   }
-  # first "drop levels" to ensure cardinality is as low as possible
+  
+  # "drop levels" to ensure cardinality is as low as possible
   df <- droplevels(df)
   
   # default OCCAM variable type is "independent" = 1 (2=DV, 0=Ignore)
-  var_types <- rep(1, length(df))
+  var_types <- rep(1, num_variables)
   
-  if (!is.null(DV)) {
-    var_types[DV] <- 2
+  # now handle DV column(s)
+  for (i in DV) {
+    var_types[i] <- 2
   }
   
   # now handle "ignore" columns
@@ -56,7 +117,7 @@ make_OCCAM_data <- function(df, DV=NULL, ignore_cols=c(), test_rows=c()) {
   df_num <- data.frame(as.numeric(df[, 1]))
   names(df_num)[1] <- names(df)[1]
   
-  for (i in 2:length(df)){
+  for (i in 2:num_variables){
     df_num <- cbind(df_num, as.numeric(df[, i]))
     names(df_num)[i] <- names(df)[i]
   }
@@ -86,11 +147,7 @@ make_OCCAM_data <- function(df, DV=NULL, ignore_cols=c(), test_rows=c()) {
   var_header[, 4] <- var_labels[1:length(df_num)] # OCCAM lettering, A...Z
   
   names(var_header) <- c("VarName", "Cardinality", "VarType", "VarLabel")
-  
-  if (!is.null(DV)) {
-    var_header[var_header$VarType == 2, ]$VarLabel = "z"
-  }
-  
+
   # prepare a vector with the data to output
   out_vec <- c("# OCCAM DATA FILE")
   out_vec <- c(out_vec, "")
@@ -138,7 +195,6 @@ make_OCCAM_data <- function(df, DV=NULL, ignore_cols=c(), test_rows=c()) {
   } 
   
   out_vec <- c(out_vec, "# End of OCCAM data file")
-
   return(out_vec)
 }
 
@@ -147,7 +203,7 @@ make_OCCAM_data <- function(df, DV=NULL, ignore_cols=c(), test_rows=c()) {
 
 # build a small random data frame with some factors in it
 NumRows <- 15
-NumExtraCols <- 25 # use this to add random columns to test number variables > 26
+NumExtraCols <- 2 # use this to add random columns to test number variables > 26
 
 shirts <- data.frame(sample(x = c("Red", "Orange", "Yellow", "Green", "Blue",
                               "Indigo", "Violet"),
