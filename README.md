@@ -55,11 +55,10 @@ OCCAM expects data in format like the following example.  See OCCAM's manual for
 The following is a list of limitations and potential improvements.
 
 * currently only produces a "no frequency" variant; the same data can be represented with cases and a count (makes a smaller file)
-* doesn't label a dependent varaible (DV) as "Z" in the abbreviations (as is the norm in OCCAM files/DMM literature)
 * doesn't check for non-factor variables and may behave unpredictably with these (e.g. cardinality = number of cases!)
 * use existing R tools to bin continuous data or re-bin factors to lower cardinality
 * could be nicer if it aligned the header section on commas for readability
-* allow specifying exact variable labels as part of the input?
+* allow specifying exact variable labels as part of the input
 
 Additional Related Projects:
 * creating binning code with analysis that can analyze a varaible and propose different options for binning/re-binning
@@ -67,7 +66,10 @@ Additional Related Projects:
 
 # Recent Updates
 
-## Version: 0.2 (24 October 2018)
+## Version: 0.21 (24 October 2018)
 
 * added ability to handle up to 676 variables (26 ^ 2) with names AA, BA, ... ZZ
+* added ability to use Z-based variable labels for Dependent Variables (DVs).
+    * when number variables <= 26, DVs are Z, Y, X, ...  and IVs are A, B, C, ...
+    * when more than 26 variables, DVs are ZZ, ZY, ZX, ..., and IVs are AA, BB, CC, ..., YY, BA, CA, ... 
 * fixed bug where if no test data is provided a ":test" is no longer included in the output
