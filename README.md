@@ -57,7 +57,7 @@ The following is a list of limitations and potential improvements.
 * currently only produces a "no frequency" variant; the same data can be represented with cases and a count (makes a smaller file)
 * doesn't check for non-factor variables and may behave unpredictably with these (e.g. cardinality = number of cases!)
 * use existing R tools to bin continuous data or re-bin factors to lower cardinality
-* could be nicer if it aligned the header section on commas for readability
+* would be nicer if it aligned the header section on commas for readability
 * allow specifying exact variable labels as part of the input
 
 Additional Related Projects:
